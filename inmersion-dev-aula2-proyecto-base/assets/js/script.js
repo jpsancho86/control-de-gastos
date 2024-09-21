@@ -31,8 +31,11 @@ function actualizarLista(){
     listaNombreGasto.forEach((elemento,posicion)=>{
        const valorGasto=listaValorGasto[posicion];
         let descripcion= listaDescripcionGasto[posicion];
-       htmlLista+=`<li>${elemento} ${descripcion} $${valorGasto}
-                <button onclick="eliminarBoton(${posicion});">Eliminar</button>             
+       htmlLista+=`<li>${elemento} - $${valorGasto} <br>Descripcion: ${descripcion}
+                <div>
+                <button onclick="modificarBoton(${posicion});">Modificar</button>
+                <button onclick="eliminarBoton(${posicion});">Eliminar</button>
+                </div>           
                 </li>`;
 
         //calculo del total
@@ -55,6 +58,30 @@ function eliminarBoton(posicion){
     listaNombreGasto.splice(posicion,1);
     listaValorGasto.splice(posicion,1);
     listaDescripcionGasto.splice(posicion,1);
+
+    actualizarLista();
+}
+function modificarBoton(posicion){
+    //Obtener y mostar datos a modificar
+    document.getElementById('nombreGasto').value=listaNombreGasto[posicion];
+    document.getElementById('valorGasto').value=listaValorGasto[posicion];
+    document.getElementById('descripcionGasto').value=listaDescripcionGasto[posicion];
+    //Cambiar boton
+    const actulizarBoto=document.getElementById('botonFormulario');
+    actulizarBoto.innerText="Actualizar Gasto";
+    actulizarBoto.onclick= function(){actualizarBoton(posicion)};
+    
+    
+}
+function actualizarBoton(posicion){
+    //Actualizar datos
+    listaDescripcionGasto[posicion]=document.getElementById('descripcionGasto').value;
+    listaNombreGasto[posicion]=document.getElementById('nombreGasto').value;
+    listaValorGasto[posicion]=document.getElementById('valorGasto').value;
+    
+    const actulizarBoto=document.getElementById('botonFormulario');
+    actulizarBoto.innerText="Agregar Gasto";
+    actulizarBoto.onclick= clickBoton;
     
     actualizarLista();
 }
