@@ -5,14 +5,12 @@ function clickBoton(){
     let nombreGasto= document.getElementById('nombreGasto').value;
     let valorGasto= document.getElementById('valorGasto').value;
 
-    console.log(nombreGasto);
-    console.log(valorGasto);
-
     listaNombreGasto.push(nombreGasto);
     listaValorGasto.push(valorGasto);
-    
-    console.log(listaNombreGasto);
-    console.log(listaValorGasto);
+
+    if(Number(valorGasto)>150){
+        alert("Este es un gasto de mas de $150");
+    }
 
     actualizarLista();
 }
