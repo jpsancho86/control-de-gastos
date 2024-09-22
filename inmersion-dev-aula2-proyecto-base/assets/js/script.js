@@ -79,9 +79,9 @@ function actualizarBoton(posicion){
     listaNombreGasto[posicion]=document.getElementById('nombreGasto').value;
     listaValorGasto[posicion]=document.getElementById('valorGasto').value;
     
-    const actulizarBoto=document.getElementById('botonFormulario');
-    actulizarBoto.innerText="Agregar Gasto";
-    actulizarBoto.onclick= clickBoton;
+    const actulizarBoton=document.getElementById('botonFormulario');
+    actulizarBoton.innerText="Agregar Gasto";
+    actulizarBoton.onclick= clickBoton;
     
     actualizarLista();
 }
